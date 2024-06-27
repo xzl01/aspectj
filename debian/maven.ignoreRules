@@ -1,0 +1,10 @@
+
+com.github.olivergondza maven-jdk-tools-wrapper
+junit junit
+org.apache.maven.plugins maven-javadoc-plugin
+org.aspectj testing-util
+org.aspectj org.aspectj.matcher test-jar * * *
+
+xml-apis xml-apis
+xercesImpl xercesImpl
+jrockit jrockit

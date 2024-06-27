@@ -1,0 +1,31 @@
+pom.xml --package=libaspectj-java
+
+ajbrowser/pom.xml --ignore
+ajde.core/pom.xml --ignore
+ajde/pom.xml --ignore
+ajdoc/pom.xml
+asm/pom.xml
+bcel-builder/pom.xml
+bridge/pom.xml
+build/pom.xml --ignore
+docs/pom.xml
+loadtime/pom.xml
+org.aspectj.ajdt.core/pom.xml
+org.aspectj.matcher/pom.xml
+org.eclipse.jdt.core/pom.xml --ignore
+run-all-junit-tests/pom.xml --ignore
+runtime/pom.xml
+taskdefs/pom.xml
+testing-client/pom.xml
+testing-drivers/pom.xml --ignore
+testing-util/pom.xml --ignore
+testing/pom.xml --ignore
+tests/pom.xml --ignore
+util/pom.xml
+weaver/pom.xml
+
+aspectjrt/pom.xml     --java-lib --package=libaspectj-java
+aspectjweaver/pom.xml --java-lib --package=libaspectj-java
+aspectjtools/pom.xml  --java-lib --package=libaspectj-java
+
+installer/pom.xml --ignore

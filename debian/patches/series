@@ -1,7 +1,6 @@
 01_ajc_xml_typo.diff
 03_use_system_docbook.diff
 04_use_xsltproc_for_doc.diff
-05_build_classpath.diff
-ant_0_8_fix.diff
-use_system_asm.diff
 09_compile-bcel-builder.diff
+10_java11-compatibility.patch
+10_manifest.patch

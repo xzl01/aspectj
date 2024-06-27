@@ -15,7 +15,7 @@ Last-Update: 2009-08-18
          <!-- default value for xml-html copying (copy all graphics) -->
          <property name="xml-html-copy" value="*.gif,*.png" />
          <property name="xml-html-stylesheet" value="aspectj-docs.css" />
-@@ -274,7 +270,7 @@
+@@ -277,7 +273,7 @@
                     value="${nochunk.xsl.source}"
              />
              <param name="xml-target-dir" value="${docs.dist.dir}" />
@@ -24,7 +24,7 @@ Last-Update: 2009-08-18
                     value="${docs.dist.dir}/doc/faq.html"
              />
              <param name="xml-html-stylesheet" value="aspectj-faq.css" />
-@@ -360,6 +356,9 @@
+@@ -363,6 +359,9 @@
              <param name="xml-target-dir"
                     value="${docs.dist.dir}/doc/${guide.name}"
              />
@@ -34,7 +34,7 @@ Last-Update: 2009-08-18
          </antcall>
          <!-- single -->
          <antcall target="xml-html">
-@@ -373,7 +372,7 @@
+@@ -376,7 +375,7 @@
              <param name="xml-target-dir"
                     value="${docs.dist.dir}/doc/${guide.name}"
              />
@@ -43,7 +43,7 @@ Last-Update: 2009-08-18
                     value="${docs.dist.dir}/doc/${guide.name}/printable.html"
              />
          </antcall>
-@@ -484,13 +483,13 @@
+@@ -487,13 +486,13 @@
      </target>
  
      <target name="xml-html"
@@ -59,7 +59,7 @@ Last-Update: 2009-08-18
       xml-html-copy   # copy files to target (defaults to *.gif,*.png)
       xml-html-stylesheet   # style sheet to use (defaults to ${xml-html-stylesheet})"
      >
-@@ -501,20 +500,21 @@
+@@ -504,20 +503,21 @@
                       includes="${xml-html-copy}"
              />
          </copy>

@@ -21,9 +21,8 @@ find $DIR -name .gitignore -delete
 # Remove unlicenced files
 find $DIR -type d -name "testdata" | xargs rm -rf
 find $DIR -type d -name "testsrc"  | xargs rm -rf
-rm -rf $DIR/tests/
-rm -rf $DIR/testing/
-rm -rf $DIR/org.aspectj.ajdt.core/scripts/*.py
+find $DIR/tests/ -type f ! -name 'pom.xml' -delete
+find $DIR/testing/ -type f ! -name 'pom.xml' -delete
 
 # Remove non-free docs
 rm -rf $DIR/docs/dist/doc/examples
@@ -47,12 +46,12 @@ rm -f $DIR/lib/bcel/bcel*.zip
 
 # Expand the jdt sources and remove the archive
 rm -f $DIR/org.eclipse.jdt.core/jdtcore-for-aspectj*.jar
-mkdir -p $DIR/org.eclipse.jdt.core/src
-unzip -o -d $DIR/org.eclipse.jdt.core/src $DIR/org.eclipse.jdt.core/jdtcore-for-aspectj*.zip
+mkdir -p $DIR/org.eclipse.jdt.core/src/main/java
+unzip -o -d $DIR/org.eclipse.jdt.core/src/main/java $DIR/org.eclipse.jdt.core/jdtcore-for-aspectj*.zip
 rm -f $DIR/org.eclipse.jdt.core/jdtcore-for-aspectj*.zip
 
 # NOTE:this jar is rebuild after initial bootstrap
-#rm -f $DIR/lib/build/build.jar
+rm -Rf $DIR/lib/build/*.jar
 
 # Bootstrap using symlink to existing aspectj
 rm -f $DIR/lib/aspectj/lib/aspectj*.jar
@@ -60,7 +59,7 @@ rm -f $DIR/lib/aspectj/lib/aspectj*.jar
 # The LICENSE.TXT here refers to managementapi-jrockit81.jar which is removed as well
 # See http://dev.eclipse.org/viewcvs/index.cgi/org.aspectj/modules/lib/ext/jrockit/LICENSE.TXT?root=Tools_Project&view=co
 (cd $DIR/lib/ext/jrockit && rm -f jrockit.jar LICENSE.TXT managementapi-jrockit81.jar jrockit-src.zip)
-rm -f $DIR/loadtime/src/org/aspectj/weaver/loadtime/JRockitAgent.java
+rm -f $DIR/loadtime/src/main/java/org/aspectj/weaver/loadtime/JRockitAgent.java
 
 # These ones are not needed
 rm -Rf $DIR/lib/docbook

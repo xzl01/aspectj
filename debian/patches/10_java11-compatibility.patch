@@ -1,0 +1,33 @@
+--- a/ajdoc/src/main/java/org/aspectj/tools/ajdoc/JavadocRunner.java
++++ b/ajdoc/src/main/java/org/aspectj/tools/ajdoc/JavadocRunner.java
+@@ -32,10 +32,10 @@
+ 
+ 	static boolean has14ToolsAvailable() {
+ 		try {
+-			Class jdMainClass = com.sun.tools.javadoc.Main.class;
++			Class jdMainClass = Class.forName("com.sun.tools.javadoc.Main");
+ 			Class[] paramTypes = new Class[] { String[].class };
+ 			jdMainClass.getMethod("execute", paramTypes);
+-		} catch (NoClassDefFoundError e) {
++		} catch (NoClassDefFoundError | ClassNotFoundException e) {
+ 			return false;
+ 		} catch (UnsupportedClassVersionError e) {
+ 			return false;
+@@ -73,14 +73,13 @@
+ 		
+ 		try {
+ 			// for JDK 1.4 and above call the execute method...
+-			Class jdMainClass = com.sun.tools.javadoc.Main.class;
+ 			Method executeMethod = null;
+ 			try {
++				Class jdMainClass = Class.forName("com.sun.tools.javadoc.Main");
+ 				Class[] paramTypes = new Class[] { String[].class };
+ 				executeMethod = jdMainClass.getMethod("execute", paramTypes);
+-			} catch (NoSuchMethodException e) {
+-				com.sun.tools.javadoc.Main.main(javadocargs);
+-				// throw new UnsupportedOperationException("ajdoc requires a tools library from JDK 1.4 or later.");
++			} catch (NoSuchMethodException | ClassNotFoundException e) {
++				throw new UnsupportedOperationException("ajdoc requires a tools library from JDK 1.4 or later.");
+ 			}
+ 			try {
+ 				executeMethod.invoke(null, new Object[] { javadocargs });

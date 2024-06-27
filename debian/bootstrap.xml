@@ -13,13 +13,10 @@
   </target>
 
   <target name="all">
-    <!-- Build lib/bcel/bcel.jar and lib/bcel/bcel-verifier.jar -->
-    <ant antfile="build.xml" dir="bcel-builder"/>
-
     <!-- Build org.eclipse.jdt.core/jdtcore-for-aspectj.jar -->
     <property name="module.dir" value="org.eclipse.jdt.core"/>
     <mkdir dir="${module.dir}/classes"/>
-    <iajc sourceroots="${module.dir}/src"
+    <iajc sourceroots="${module.dir}/src/main/java"
           source="1.8"
           target="1.8"
           destDir="${module.dir}/classes">
@@ -39,6 +36,7 @@
             <include name="equinox-common.jar"/>
             <include name="equinox-preferences.jar"/>
             <include name="equinox-registry.jar"/>
+            <include name="osgi.cmpn.jar"/>
           </fileset>
         </path>
       </classpath>
@@ -46,17 +44,36 @@
 
     <jar jarfile="${module.dir}/jdtcore-for-aspectj.jar">
     <fileset dir="${module.dir}/classes"/>
-    <fileset dir="${module.dir}/src">
+    <fileset dir="${module.dir}/src/main/java">
       <include name="**/*.properties"/>
       <include name="**/*.rsc"/>
       <include name="**/*.props"/>
     </fileset>
+    <zipgroupfileset dir="/usr/share/java/">
+      <include name="eclipse-osgi.jar"/>
+      <include name="eclipse-core-filesystem.jar"/>
+      <include name="eclipse-core-jobs.jar"/>
+      <include name="eclipse-core-contenttype.jar"/>
+      <include name="eclipse-core-resources.jar"/>
+      <include name="eclipse-core-runtime.jar"/>
+      <include name="eclipse-text.jar"/>
+      <include name="equinox-app.jar"/>
+      <include name="equinox-common.jar"/>
+      <include name="equinox-preferences.jar"/>
+      <include name="equinox-registry.jar"/>
+    </zipgroupfileset>
     </jar>
 
-    <!-- Rebuild and overwrite lib/build/build.jar from build/**/*.java -->
-    <ant antfile="build.xml" dir="build" target="build"/>
-    <copy file="aj-build/jars/build.jar" tofile="lib/build/build.jar"/>
+    <zip zipfile="${module.dir}/jdtcore-for-aspectj-src.zip" basedir="${module.dir}/src/main/java"/>
+  </target>
 
+  <target name="rename-asm">
+    <mkdir dir="lib/asm"/>
+    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask" classpath="/usr/share/java/jarjar.jar"/>
+    <jarjar jarfile="lib/asm/asm-7.2.renamed.jar">
+      <zipfileset src="/usr/share/java/asm-all.jar"/>
+      <rule pattern="org.objectweb.**" result="aj.org.objectweb.@1"/>
+    </jarjar>
   </target>
 
 </project>

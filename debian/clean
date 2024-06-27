@@ -11,9 +11,11 @@ aj-build/
 lib/bcel/bcel.jar
 lib/bcel/bcel-verifier.jar
 bcel-builder/bin/
+build/local.properties
 lib/bcel/*.zip
 org.eclipse.jdt.core/classes/
 org.eclipse.jdt.core/jdtcore-for-aspectj.jar
+org.eclipse.jdt.core/jdtcore-for-aspectj-src.zip
 debian/aj.1
 debian/ajbrowser.1
 debian/ajc.1

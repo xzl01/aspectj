@@ -15,6 +15,7 @@ Build-Depends:
  junit (>= 3.8.1),
  libasm-java (>= 6.1),
  libaspectj-java (>= 1.9.0~beta5-1~),
+ libbuild-helper-maven-plugin-java,
  libcommons-logging-java,
  libequinox-app-java,
  libequinox-common-java,
@@ -27,14 +28,19 @@ Build-Depends:
  libeclipse-core-runtime-java,
  libeclipse-osgi-java,
  libeclipse-text-java,
+ libjarjar-java,
+ libmaven-antrun-plugin-java,
+ libmaven-assembly-plugin-java,
+ libmaven-javadoc-plugin-java,
  libregexp-java,
  libxalan2-java,
- maven-repo-helper,
+ maven-debian-helper,
  xsltproc
-Standards-Version: 4.5.1
+Rules-Requires-Root: no
+Standards-Version: 4.6.0.1
 Vcs-Git: https://salsa.debian.org/java-team/aspectj.git
 Vcs-Browser: https://salsa.debian.org/java-team/aspectj
-Homepage: http://www.eclipse.org/aspectj
+Homepage: https://www.eclipse.org/aspectj
 
 Package: aspectj
 Architecture: all
@@ -52,10 +58,9 @@ Description: aspect-oriented extension for Java - tools
 
 Package: libaspectj-java
 Architecture: all
-Replaces: aspectj (<< 1.6.10+dfsg-1)
-Conflicts: aspectj (<< 1.6.10+dfsg-1)
 Depends: ${misc:Depends}
 Suggests: aspectj
+Multi-Arch: foreign
 Description: aspect-oriented extension for Java - library
  AspectJ enables the clean modularization of crosscutting concerns
  such as: error checking and handling, synchronization, context-sensitive
@@ -68,6 +73,7 @@ Package: aspectj-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
+Multi-Arch: foreign
 Description: aspect-oriented extension for Java - documentation
  AspectJ enables the clean modularization of crosscutting concerns
  such as: error checking and handling, synchronization, context-sensitive

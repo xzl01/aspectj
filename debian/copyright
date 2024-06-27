@@ -1,6 +1,8 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: AspectJ
 Source: https://github.com/eclipse/org.aspectj
+Files-Excluded: .mvn/*
+                mvnw*
 
 Files: *
 Copyright: 1997-2002, Xerox Corporation

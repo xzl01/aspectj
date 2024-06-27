@@ -1,3 +1,35 @@
+aspectj (1.9.5-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Apply multi-arch hints. + aspectj-doc, libaspectj-java: Add Multi-Arch:
+    foreign.
+  * Use secure URI in Homepage field.
+
+  [ Jochen Sprickerhof ]
+  * Add missing bootstrap dependency (Closes: #1027649)
+  * Add R³
+  * Drop ancient Conflicts/Replaces
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Mon, 27 Feb 2023 12:11:05 +0100
+
+aspectj (1.9.5-1) unstable; urgency=medium
+
+  * New upstream release
+    - Refreshed the patches
+    - Build with Maven instead of Ant
+  * Fixed the build failure with Java 17 (Closes: #981990)
+  * Allow ajdoc to run without tools.jar
+  * Embed a relocated version of asm to match upstream packaging
+  * Skip the generation of the manifests (invalid for some reason)
+  * Standards-Version updated to 4.6.0.1
+  * Remove the Maven wrapper from the upstream tarball
+  * Adapted debian/orig-tar.sh to the new source layout
+  * No longer check if GCJ is installed in the ajdoc script
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 16 May 2022 22:51:36 +0200
+
 aspectj (1.9.2-2) unstable; urgency=medium
 
   * Team upload.

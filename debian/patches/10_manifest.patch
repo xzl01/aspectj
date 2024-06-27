@@ -1,0 +1,58 @@
+Description: The manifest entries are invalid (why?), so do not generate them.
+ To be tried again with a more recent version of maven-assembly-plugin/maven-archiver
+Author: Emmanuel Bourg <ebourg@apache.org>
+Forwarded: not-needed
+--- a/aspectjrt/pom.xml
++++ b/aspectjrt/pom.xml
+@@ -54,6 +54,7 @@
+ 									<Automatic-Module-Name>org.aspectj.runtime</Automatic-Module-Name>
+ 								</manifestEntries>
+ 
++<!--
+ 								<manifestSections>
+ 									<manifestSection>
+ 										<name>org/aspectj/lang/</name>
+@@ -75,6 +76,7 @@
+ 										</manifestEntries>
+ 									</manifestSection>
+ 								</manifestSections>
++-->
+ 							</archive>
+ 
+ 							<descriptors>
+--- a/aspectjtools/pom.xml
++++ b/aspectjtools/pom.xml
+@@ -112,6 +112,7 @@
+ 									<Automatic-Module-Name>org.aspectj.tools</Automatic-Module-Name>
+ 								</manifestEntries>
+ 
++<!--
+ 								<manifestSections>
+ 									<manifestSection>
+ 										<name>org/aspectj/tools/</name>
+@@ -133,6 +134,7 @@
+ 										</manifestEntries>
+ 									</manifestSection>
+ 								</manifestSections>
++-->
+ 							</archive>
+ 
+ 							<descriptors>
+--- a/aspectjweaver/pom.xml
++++ b/aspectjweaver/pom.xml
+@@ -82,6 +82,7 @@
+ 								</manifestEntries>
+ 
+ 
++<!--
+ 								<manifestSections>
+ 									<manifestSection>
+ 										<name>org/aspectj/weaver/</name>
+@@ -103,6 +104,7 @@
+ 										</manifestEntries>
+ 									</manifestSection>
+ 								</manifestSections>
++-->
+ 							</archive>
+ 
+ 							<descriptors>
